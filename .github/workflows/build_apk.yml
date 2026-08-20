@@ -28,7 +28,7 @@ jobs:
         gradle-version: 8.6
 
     - name: Build APK
-      run: gradle :app:assembleDebug --stacktrace --no-daemon
+      run: gradle :app:assembleDebug -Pandroid.useAndroidX=true -Pandroid.nonTransitiveRClass=true --stacktrace --no-daemon
 
     - name: Upload APK Artifact
       if: always()

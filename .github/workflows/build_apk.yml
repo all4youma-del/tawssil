@@ -28,11 +28,10 @@ jobs:
         gradle-version: 8.6
 
     - name: Build APK
-      run: gradle :app:assembleDebug -Pandroid.useAndroidX=true -Pandroid.nonTransitiveRClass=true --stacktrace --no-daemon
+      run: gradle assembleDebug -Pandroid.useAndroidX=true -Pandroid.nonTransitiveRClass=true --no-daemon
 
     - name: Upload APK Artifact
-      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: delivery-app-apk
-        path: app/build/outputs/apk/debug/*.apk
+        path: "**/build/outputs/apk/debug/*.apk"
